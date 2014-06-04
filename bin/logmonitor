@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+$: << File.expand_path('../../lib', __FILE__)
+require 'logmonitor/app'
+
+app = LogMonitor::App.new ARGV
+begin
+  app.run
+rescue Interrupt
+  STDERR.puts 'interrupted'
+  exit 130	# interrupted exit code
+end
